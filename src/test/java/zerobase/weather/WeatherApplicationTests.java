@@ -1,13 +1,22 @@
 package zerobase.weather;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 class WeatherApplicationTests {
 
 	@Test
-	void contextLoads() {
+	void equalTest(){
+		assertEquals(1,1);
 	}
 
+	@Test
+	public void assertTrue() {
+		assertEquals(1, 1);
+	}
+	
 }
