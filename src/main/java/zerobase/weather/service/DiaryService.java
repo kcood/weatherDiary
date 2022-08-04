@@ -17,7 +17,7 @@ public class DiaryService {
     private String apiKey;
 
     public void createDiary(LocalDate date, String text){
-        System.out.println(getWeatherString());
+        String weatherData = getWeatherString();
     }
 
     private String getWeatherString(){
