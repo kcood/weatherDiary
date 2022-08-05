@@ -109,8 +109,8 @@ public class DiaryService {
     }
 
     public List<Diary> readDiary(LocalDate date) {
-        if (date.isAfter(LocalDate.ofYearDay(3050,1)))
-            throw new InvalidDate();
+//        if (date.isAfter(LocalDate.ofYearDay(3000,1)))
+//            throw new InvalidDate();
         return diaryRepository.findAllByDate(date);
     }
 
