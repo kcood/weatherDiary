@@ -1,5 +1,7 @@
 package zerobase.weather.controller;
 
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 import zerobase.weather.domain.Diary;
@@ -17,6 +19,7 @@ public class DiaryController {
         this.diaryService = diaryService;
     }
 
+    @ApiOperation(value = "일기 텍스트와 날씨를 이용해 DB에 일기 저장", notes = "notes")
     @PostMapping("/create/diary")
     void createDiary(@RequestParam @DateTimeFormat(iso=DateTimeFormat.ISO.DATE) LocalDate date, @RequestBody String text){
         diaryService.createDiary(date, text);
@@ -28,8 +31,8 @@ public class DiaryController {
     }
 
     @GetMapping("/read/diaries")
-    List<Diary> readDiaries(@RequestParam @DateTimeFormat(iso=DateTimeFormat.ISO.DATE) LocalDate startDate,
-                            @RequestParam @DateTimeFormat(iso=DateTimeFormat.ISO.DATE) LocalDate endDate){
+    List<Diary> readDiaries(@RequestParam @DateTimeFormat(iso=DateTimeFormat.ISO.DATE) @ApiParam(value = "조회할 기간의 시작일", example = "2020-02-02") LocalDate startDate,
+                            @RequestParam @DateTimeFormat(iso=DateTimeFormat.ISO.DATE) @ApiParam(value = "조회할 기간의 마지막날", example = "2020-02-02") LocalDate endDate){
         return diaryService.readDiaries(startDate,endDate);
     }
 
